@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, HashRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import SignIn from './Components/SignIn';
 import Edit from './Pages/Edit';
 import Create from './Pages/Create';
@@ -9,7 +9,7 @@ import App from './Pages/App';
 
 
 ReactDOM.render(
-  <HashRouter>
+
   <Router>
   <div>
     <Route exact path='/' component={App} />
@@ -18,8 +18,7 @@ ReactDOM.render(
     <Route path='/login' component={SignIn} />
     <Route path='/show/:id' component={Show} />
   </div>
-</Router>
-</HashRouter>,
+</Router>,
   
   
  document.getElementById('root'));
