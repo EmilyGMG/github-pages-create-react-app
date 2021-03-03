@@ -83,10 +83,10 @@ class Edit extends Component {
                  <br />
                   <select name="prioridade" value={this.state.prioridade} onChange={this.onChange} id="prioridade" style={{ color: '#fff0',width: '100%' }}>
                     <option value="#fff0" style={{background:'#fff0'}}>+</option> 
-                    <option value="green" style={{background:'green'}}>+</option>
-                    <option value="yellow" style={{background:'yellow'}}>+</option>
-                    <option value="red" style={{background:'red'}}>+</option>
-                    <option value="purple" style={{background:'purple'}}>+</option>
+                    <option value="green" style={{background:'green'}}>Verde</option>
+                    <option value="yellow" style={{background:'yellow'}}>Amarelo</option>
+                    <option value="red" style={{background:'red'}}>Vermelho</option>
+                    <option value="purple" style={{background:'purple'}}>Roxo</option>
                   </select>
                 
               </div>
