@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import SignIn from './Components/SignIn';
 import Edit from './Pages/Edit';
 import Create from './Pages/Create';
 import Show from './Pages/Show';
@@ -15,7 +14,6 @@ ReactDOM.render(
     <Route exact path='/' component={App} />
     <Route path='/edit/:id' component={Edit} />
     <Route path='/create' component={Create} />
-    <Route path='/login' component={SignIn} />
     <Route path='/show/:id' component={Show} />
   </div>
 </Router>,
