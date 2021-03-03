@@ -1,0 +1,22 @@
+.panel-heading {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+button {
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: orange;
+}
+
+a:hover {
+  text-decoration: none;
+  cursor: pointer;
+  color: orange;
+}
