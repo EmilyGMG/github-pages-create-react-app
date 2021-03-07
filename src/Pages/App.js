@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
-import firebase from '../Firebase';
+import firebase from './Firebase';
 
 class App extends Component {
   constructor(props) {
