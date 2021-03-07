@@ -57,7 +57,7 @@ class App extends Component {
               <tbody>
                 {this.state.boards.map(board =>
                   <tr>
-                    <td style={{ backgroundColor: `${board.problem}` }}><Link to={`/show/${board.key}`} style={{ color: 'black', textTransform: 'capitalize', cursor: 'pointer', }}>{board.problem}</Link></td>
+                    <td style={{ backgroundColor: `${board.problem}` }}><Link to={`/show/${board.key}`} style={{ color: 'white', textTransform: 'capitalize', cursor: 'pointer', textShadow: '2px 2px black' }}>{board.problem}</Link></td>
                     <td>{board.title}</td>
                     <td>{board.date}</td>
                   </tr>
