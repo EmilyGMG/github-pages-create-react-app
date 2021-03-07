@@ -78,7 +78,7 @@ class Create extends Component {
               </div>
               <div className="form-group">
                 <label for="date">Data</label>
-                <input type="text" className="form-control" name="date" value={date} onChange={this.onChange} placeholder="Data" />
+                <input type="text" className="form-control" name="date" value={date} onChange={this.onChange} placeholder="00/00" />
               </div>
               <div class="col-md-4 text-center mt-4">
                 <button type="submit" class="btn btn-secondary">Enviar</button>

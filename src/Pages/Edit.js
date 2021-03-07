@@ -99,7 +99,7 @@ class Edit extends Component {
 
               <div class="form-group">
                 <label for="date">Data</label>
-                <input type="text" class="form-control" name="date" value={this.state.date} onChange={this.onChange} placeholder="Data" />
+                <input type="text" class="form-control" name="date" value={this.state.date} onChange={this.onChange} placeholder="00/00" />
               </div>
               <div class="col-md-4 text-center mt-4">
                 <button type="submit" class="btn btn-secondary">Enviar</button>
