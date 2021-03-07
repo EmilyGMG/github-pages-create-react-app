@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from './firebase';
+import firebase from './Firebase';
 import { Link } from 'react-router-dom';
 
 class Edit extends Component {
@@ -8,7 +8,7 @@ class Edit extends Component {
     super(props);
     this.state = {
       key: '',
-      prioridade: '',
+      problem: '',
       title: '',
       description: '',
       date: ''
@@ -22,7 +22,7 @@ class Edit extends Component {
         const board = doc.data();
         this.setState({
           key: doc.id,
-          prioridade: board.prioridade,
+          problem: board.problem,
           title: board.title,
           description: board.description,
           date: board.date
@@ -36,33 +36,33 @@ class Edit extends Component {
   onChange = (e) => {
     const state = this.state
     state[e.target.name] = e.target.value;
-    this.setState({board:state});
+    this.setState({ board: state });
   }
 
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { prioridade, title, description, date } = this.state;
+    const { problem, title, description, date } = this.state;
 
     const updateRef = firebase.firestore().collection('boards').doc(this.state.key);
     updateRef.set({
-      prioridade,
+      problem,
       title,
       description,
       date
     }).then((docRef) => {
       this.setState({
         key: '',
-        prioridade: '',
+        problem: '',
         title: '',
         description: '',
         date: ''
       });
-      this.props.history.push("/show/"+this.props.match.params.id)
+      this.props.history.push("/show/" + this.props.match.params.id)
     })
-    .catch((error) => {
-      console.error("Error adding document: ", error);
-    });
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
   }
 
   render() {
@@ -73,38 +73,37 @@ class Edit extends Component {
             <h3 class="panel-title">
               Editar
             </h3>
-            
           </div>
           <div class="panel-body">
-          <h4><Link to="/" class="btn btn-secondary">←</Link></h4>
+            <h4><Link to={`/show/${this.state.key}`} class="btn btn-secondary">←</Link></h4>
             <form onSubmit={this.onSubmit}>
-            <div class="form-group">
-                <label for="prioridade">Prioridade</label>
-                 <br />
-                  <select name="prioridade" value={this.state.prioridade} onChange={this.onChange} id="prioridade" style={{ color: '#fff0',width: '100%' }}>
-                    <option value="#fff0" style={{background:'#fff0'}}>+</option> 
-                    <option value="green" style={{background:'green'}}>Verde</option>
-                    <option value="yellow" style={{background:'yellow'}}>Amarelo</option>
-                    <option value="red" style={{background:'red'}}>Vermelho</option>
-                    <option value="purple" style={{background:'purple'}}>Roxo</option>
-                  </select>
-                
+              <div class="form-group">
+                <label for="problem">Problema</label>
+                <br />
+                <select name="problem" value={this.state.problem} onChange={this.onChange} id="problem" style={{ color: '#fff0', width: '100%' }}>
+                  <option value="#fff0" style={{ background: '#fff0' }}>+</option>
+                  <option value="green" style={{ background: 'green' }}>Verde</option>
+                  <option value="yellow" style={{ background: 'yellow' }}>Amarelo</option>
+                  <option value="red" style={{ background: 'red' }}>Vermelho</option>
+                  <option value="purple" style={{ background: 'purple' }}>Roxo</option>
+                </select>
               </div>
               <div class="form-group">
-                <label for="title">Nome do Problema</label>
-                <input type="text" class="form-control" name="title" value={this.state.title} onChange={this.onChange} placeholder="title" />
+                <label for="title">Nome</label>
+                <input type="text" class="form-control" name="title" value={this.state.title} onChange={this.onChange} placeholder="Nome" />
               </div>
               <div class="form-group">
                 <label for="description">Descrição</label>
-                <input type="text" class="form-control" name="description" value={this.state.description} onChange={this.onChange} placeholder="Description" />
+                <input type="text" class="form-control" name="description" value={this.state.description} onChange={this.onChange} placeholder="Descrição" />
               </div>
+
               <div class="form-group">
                 <label for="date">Data</label>
-                <input type="text" class="form-control" name="date" value={this.state.date} onChange={this.onChange} placeholder="date" />
+                <input type="text" class="form-control" name="date" value={this.state.date} onChange={this.onChange} placeholder="Data" />
               </div>
-              <div class="col-md-4 text-center mt-4"> 
-                <button  type="submit" class="btn btn-secondary">Pronto</button> 
-            </div>
+              <div class="col-md-4 text-center mt-4">
+                <button type="submit" class="btn btn-secondary">Enviar</button>
+              </div>
             </form>
           </div>
         </div>

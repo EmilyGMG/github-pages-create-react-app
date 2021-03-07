@@ -3,12 +3,13 @@ import "firebase/firestore";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC3cawlMauPhvyCXvEEejW6_OlqcKGYyjw",
-  authDomain: "fir-react-auth-dffc5.firebaseapp.com",
-  projectId: "fir-react-auth-dffc5",
-  storageBucket: "fir-react-auth-dffc5.appspot.com",
-  messagingSenderId: "721981670935",
-  appId: "1:721981670935:web:4a2be44da247247252fe52"
+  apiKey: "AIzaSyDmVGL1caK--_AJgTWJzO4v2jJzmB0Kma4",
+  authDomain: "crud-reactjs-com-reactna-70e26.firebaseapp.com",
+  projectId: "crud-reactjs-com-reactna-70e26",
+  storageBucket: "crud-reactjs-com-reactna-70e26.appspot.com",
+  messagingSenderId: "487641496947",
+  appId: "1:487641496947:web:5171d28118bba10fe75906"
+
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

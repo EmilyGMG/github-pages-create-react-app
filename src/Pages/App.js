@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import firebase from './firebase';
-import './style.css'
-
+import './style.css';
+import firebase from './Firebase';
 
 class App extends Component {
   constructor(props) {
@@ -17,19 +16,19 @@ class App extends Component {
   onCollectionUpdate = (querySnapshot) => {
     const boards = [];
     querySnapshot.forEach((doc) => {
-      const { prioridade, title, description, date } = doc.data();
+      const { problem, title, description, date } = doc.data();
       boards.push({
         key: doc.id,
         doc, // DocumentSnapshot
-        prioridade,
+        problem,
         title,
         description,
-        date,
+        date
       });
     });
     this.setState({
       boards
-   });
+    });
   }
 
   componentDidMount() {
@@ -38,16 +37,16 @@ class App extends Component {
 
   render() {
     return (
-      <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
+      <div className="container">
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h3 className="panel-title">
               Lista de Problemas
             </h3>
           </div>
-          <div class="panel-body">
-            <h4><button class="btn btn-secondary"><Link  to="/create">Adicionar</Link></button></h4>
-            <table class="table table-stripe">
+          <div className="panel-body">
+            <h4><Link to="/create" className="btn btn-secondary">Adicionar</Link></h4>
+            <table className="table table-stripe">
               <thead>
                 <tr>
                   <th>Prioridade</th>
@@ -58,7 +57,7 @@ class App extends Component {
               <tbody>
                 {this.state.boards.map(board =>
                   <tr>
-                    <td style={{ backgroundColor: `${board.prioridade}` }}><Link to={`/show/${board.key} `}> +</Link></td>
+                    <td style={{ backgroundColor: `${board.problem}` }}><Link to={`/show/${board.key}`} style={{ color: 'black', textTransform: 'capitalize', cursor: 'pointer', }}>{board.problem}</Link></td>
                     <td>{board.title}</td>
                     <td>{board.date}</td>
                   </tr>

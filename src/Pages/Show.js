@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import firebase from './firebase';
+import firebase from './Firebase';
 import { Link } from 'react-router-dom';
 
 class Show extends Component {
@@ -27,7 +27,7 @@ class Show extends Component {
     });
   }
 
-  delete(id){
+  delete(id) {
     firebase.firestore().collection('boards').doc(id).delete().then(() => {
       console.log("Document successfully deleted!");
       this.props.history.push("/")
@@ -41,23 +41,20 @@ class Show extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-          <h4>Descrição</h4>
-            {/* <h3 class="panel-title">
-              {this.state.board.title}
-            </h3> */}
+            <h4> Ver Problema </h4>
           </div>
           <div class="panel-body">
-          <h4><Link to="/" class="btn btn-secondary">←</Link></h4>
+            <h4><Link to="/" class="btn btn-secondary">←</Link></h4>
             <dl>
-              <dt>Nome do Problema</dt>
+              <dt>Nome</dt>
               <dd>{this.state.board.title}</dd>
-              <dt>Descrição</dt>
+              <dt>Descroção</dt>
               <dd>{this.state.board.description}</dd>
               <dt>Data</dt>
               <dd>{this.state.board.date}</dd>
             </dl>
-            <Link to={`/edit/${this.state.key}`} class="btn btn-success">Edit</Link>&nbsp;
-            <button onClick={this.delete.bind(this, this.state.key)} class="btn btn-danger">Delete</button>
+            <Link to={`/edit/${this.state.key}`} class="btn btn-success">Editar</Link>&nbsp;
+            <button onClick={this.delete.bind(this, this.state.key)} class="btn btn-danger">Deletar</button>
           </div>
         </div>
       </div>

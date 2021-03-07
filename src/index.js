@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Edit from './Pages/Edit';
 import Create from './Pages/Create';
+import * as serviceWorker from './serviceWorker';
 import Show from './Pages/Show';
 import App from './Pages/App';
 
@@ -20,5 +21,5 @@ ReactDOM.render(
   
   
  document.getElementById('root'));
-
+ serviceWorker.unregister();
 

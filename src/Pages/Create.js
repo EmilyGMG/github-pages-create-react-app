@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
-import firebase from './firebase';
+import firebase from './Firebase';
 import { Link } from 'react-router-dom';
 import './style.css'
-
-
 class Create extends Component {
 
   constructor() {
     super();
     this.ref = firebase.firestore().collection('boards');
     this.state = {
-      prioridade: '',
+      problem: '',
       title: '',
       description: '',
       date: ''
@@ -25,67 +23,66 @@ class Create extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { prioridade, description, title, date } = this.state;
+    const { problem, title, description, date } = this.state;
 
     this.ref.add({
-      prioridade,
+      problem,
       title,
       description,
       date
     }).then((docRef) => {
       this.setState({
-        prioridade: '',
+        problem: '',
         title: '',
         description: '',
         date: ''
       });
       this.props.history.push("/")
     })
-    .catch((error) => {
-      console.error("Error adding document: ", error);
-    });
+      .catch((error) => {
+        console.error("Error adding document: ", error);
+      });
   }
 
   render() {
-    const { prioridade, description, title, date } = this.state;
+    const { problem, title, description, date } = this.state;
     return (
-      <div class="container">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">
+      <div className="container">
+        <div className="panel panel-default">
+          <div className="panel-heading">
+            <h3 className="panel-title">
               Adicionar
             </h3>
           </div>
-          <div class="panel-body">
-            <h4><Link to="/" class="btn btn-secondary">←</Link></h4>
+          <div className="panel-body">
+            <h4><Link to="/" className="btn btn-secondary">←</Link></h4>
             <form onSubmit={this.onSubmit}>
-              <div class="form-group">
-                <label for="prioridade">Prioridade</label>
-                 <br />
-                  <select name="prioridade" value={prioridade} onChange={this.onChange} id="prioridade" style={{ color: '#fff0',width: '100%' }}>
-                    <option value="#fff0" style={{background:'#fff0'}}>+</option> 
-                    <option value="green" style={{background:'green'}}>Verde</option>
-                    <option value="yellow" style={{background:'yellow'}}>Amarelo</option>
-                    <option value="red" style={{background:'red'}}>Vermelho</option>
-                    <option value="purple" style={{background:'purple'}}>Roxo</option>
-                  </select>
-                
+              <div className="form-group">
+                <label for="problem">Problema</label>
+                <br />
+                <select name="problem" value={problem} onChange={this.onChange} id="problem" style={{ color: '#fff0', width: '100%' }}>
+                  <option value="#fff0" style={{ background: '#fff0' }}>+</option>
+                  <option value="green" style={{ background: 'green' }}>Verde</option>
+                  <option value="yellow" style={{ background: 'yellow' }}>Amarelo</option>
+                  <option value="red" style={{ background: 'red' }}>Vermelho</option>
+                  <option value="purple" style={{ background: 'purple' }}>Roxo</option>
+                </select>
               </div>
-              <div class="form-group">
-                <label for="title">Título</label>
-                <input type="text" class="form-control" name="title" value={title} onChange={this.onChange} />
+              <div className="form-group">
+                <label for="title">Nome do Problema</label>
+                <textArea className="form-control" name="title" onChange={this.onChange} placeholder="Nome" cols="80" rows="3">{title}</textArea>
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label for="description">Descrição</label>
-                <textArea class="form-control" name="description" onChange={this.onChange} placeholder="Descrição" cols="80" rows="3">{description}</textArea>
+                <input type="text" className="form-control" name="description" value={description} onChange={this.onChange} placeholder="Descrição" />
               </div>
-              <div class="form-group">
+              <div className="form-group">
                 <label for="date">Data</label>
-                <input type="text" class="form-control" name="date" value={date} onChange={this.onChange} placeholder="00/00" />
+                <input type="text" className="form-control" name="date" value={date} onChange={this.onChange} placeholder="Data" />
               </div>
-              <div class="col-md-4 text-center mt-4"> 
-                <button  type="submit" class="btn btn-secondary">Pronto</button> 
-            </div>
+              <div class="col-md-4 text-center mt-4">
+                <button type="submit" class="btn btn-secondary">Enviar</button>
+              </div>
             </form>
           </div>
         </div>
